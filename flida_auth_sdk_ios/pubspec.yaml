@@ -15,10 +15,11 @@ flutter:
         dartPluginClass: FlidaAuthSdkIOS
 
 dependencies:
-  flutter:
-    sdk: flutter
   flida_auth_sdk_platform_interface:
     path: ../flida_auth_sdk_platform_interface
+  flutter:
+    sdk: flutter
+
 
 dev_dependencies:
   flutter_test:

@@ -10,7 +10,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: HomePage());
+    return MaterialApp(
+      home: const HomePage(),
+      theme: ThemeData.from(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+      ),
+    );
   }
 }
 
@@ -49,7 +54,7 @@ class _HomePageState extends State<HomePage> {
       } else {
         _log('No existing session found.');
       }
-    } catch (e) {
+    } on Exception catch (e) {
       _log('Failed to restore session: $e');
     }
   }
@@ -62,7 +67,7 @@ class _HomePageState extends State<HomePage> {
         "${DateTime.now().toIso8601String().split('T').last.split('.').first}: $message",
       );
     });
-    print(message);
+    debugPrint(message);
   }
 
   void _startMonitoring() {
@@ -109,7 +114,7 @@ class _HomePageState extends State<HomePage> {
         // Fetch user info immediately
         await _getUserInfo(token.accessToken);
       }
-    } catch (e) {
+    } on Exception catch (e) {
       _log('Error during sign in: $e');
     }
   }
@@ -122,7 +127,7 @@ class _HomePageState extends State<HomePage> {
         setState(() => _user = user);
         _log('User Info: ${user.name} (${user.id})');
       }
-    } catch (e) {
+    } on Exception catch (e) {
       _log('Error fetching user info: $e');
     }
   }
@@ -143,7 +148,7 @@ class _HomePageState extends State<HomePage> {
           'Refreshed! New Access: ${newToken.accessToken.substring(0, 10)}...',
         );
       }
-    } catch (e) {
+    } on Exception catch (e) {
       _log('Error refreshing token: $e');
     }
   }
@@ -153,7 +158,7 @@ class _HomePageState extends State<HomePage> {
       _log('Signing out...');
       await FlidaAuthSdk.signOut();
       _log('Signed out called.');
-    } catch (e) {
+    } on Exception catch (e) {
       _log('Error signing out: $e');
     }
   }

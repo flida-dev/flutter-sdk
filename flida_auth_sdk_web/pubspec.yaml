@@ -15,12 +15,15 @@ flutter:
         fileName: flida_auth_sdk_web.dart
 
 dependencies:
+  crypto: ^3.0.3
+  flida_auth_sdk_platform_interface:
+    path: ../flida_auth_sdk_platform_interface
   flutter:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
-  flida_auth_sdk_platform_interface:
-    path: ../flida_auth_sdk_platform_interface
+  http: ^1.2.0
+  web: ^1.0.0
 
 dev_dependencies:
   flutter_test:

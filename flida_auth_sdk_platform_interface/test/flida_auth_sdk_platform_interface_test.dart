@@ -1,5 +1,5 @@
-import 'package:flutter_test/flutter_test.dart';
 import 'package:flida_auth_sdk_platform_interface/flida_auth_sdk_platform_interface.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 class FlidaAuthSdkMock extends FlidaAuthSdkPlatform {
   static const mockPlatformName = 'Mock';

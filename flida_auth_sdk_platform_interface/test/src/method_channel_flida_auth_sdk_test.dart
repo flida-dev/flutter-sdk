@@ -1,6 +1,6 @@
+import 'package:flida_auth_sdk_platform_interface/src/method_channel_flida_auth_sdk.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flida_auth_sdk_platform_interface/src/method_channel_flida_auth_sdk.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -14,17 +14,17 @@ void main() {
       methodChannelFlidaAuthSdk = MethodChannelFlidaAuthSdk();
       TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
           .setMockMethodCallHandler(
-        methodChannelFlidaAuthSdk.methodChannel,
-        (methodCall) async {
-          log.add(methodCall);
-          switch (methodCall.method) {
-            case 'getPlatformName':
-              return kPlatformName;
-            default:
-              return null;
-          }
-        },
-      );
+            methodChannelFlidaAuthSdk.methodChannel,
+            (methodCall) async {
+              log.add(methodCall);
+              switch (methodCall.method) {
+                case 'getPlatformName':
+                  return kPlatformName;
+                default:
+                  return null;
+              }
+            },
+          );
     });
 
     tearDown(log.clear);

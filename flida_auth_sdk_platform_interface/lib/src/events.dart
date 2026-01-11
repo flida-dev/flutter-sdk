@@ -1,4 +1,4 @@
-import 'types.dart';
+import 'package:flida_auth_sdk_platform_interface/src/types.dart';
 
 /// Types of events emitted by the Flida Auth SDK.
 enum FlidaEventType {
@@ -38,21 +38,6 @@ enum FlidaLogoutReason {
 
 /// An event emitted by the Flida Auth SDK.
 class FlidaEvent {
-  /// The type of the event.
-  final FlidaEventType type;
-
-  /// The user associated with the event, if applicable (e.g., [FlidaEventType.signedIn], [FlidaEventType.userInfoFetched]).
-  final FlidaUser? user;
-
-  /// The token associated with the event, if applicable (e.g., [FlidaEventType.signedIn], [FlidaEventType.tokensRefreshed]).
-  final FlidaToken? token;
-
-  /// The error associated with the event, if applicable (e.g., [FlidaEventType.signInFailed], [FlidaEventType.tokenRefreshFailed]).
-  final FlidaError? error;
-
-  /// The reason for logout, if applicable (e.g., [FlidaEventType.loggedOut]).
-  final FlidaLogoutReason? logoutReason;
-
   /// Creates a new [FlidaEvent].
   FlidaEvent({
     required this.type,
@@ -87,13 +72,31 @@ class FlidaEvent {
           ? FlidaToken.fromMap(Map<String, dynamic>.from(map['token'] as Map))
           : null,
       error: map['error'] != null
-          ? FlidaError(
-              code: map['error']['code'] as String,
-              message: map['error']['message'] as String,
-              details: map['error']['details'],
-            )
+          ? () {
+              final errorMap = Map<String, dynamic>.from(map['error'] as Map);
+              return FlidaError(
+                code: errorMap['code'] as String,
+                message: errorMap['message'] as String,
+                details: errorMap['details'],
+              );
+            }()
           : null,
       logoutReason: logoutReason,
     );
   }
+
+  /// The type of the event.
+  final FlidaEventType type;
+
+  /// The user associated with the event, if applicable (e.g., [FlidaEventType.signedIn], [FlidaEventType.userInfoFetched]).
+  final FlidaUser? user;
+
+  /// The token associated with the event, if applicable (e.g., [FlidaEventType.signedIn], [FlidaEventType.tokensRefreshed]).
+  final FlidaToken? token;
+
+  /// The error associated with the event, if applicable (e.g., [FlidaEventType.signInFailed], [FlidaEventType.tokenRefreshFailed]).
+  final FlidaError? error;
+
+  /// The reason for logout, if applicable (e.g., [FlidaEventType.loggedOut]).
+  final FlidaLogoutReason? logoutReason;
 }

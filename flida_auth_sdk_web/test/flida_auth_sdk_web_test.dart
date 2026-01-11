@@ -1,6 +1,7 @@
-import 'package:flutter_test/flutter_test.dart';
 import 'package:flida_auth_sdk_platform_interface/flida_auth_sdk_platform_interface.dart';
 import 'package:flida_auth_sdk_web/flida_auth_sdk_web.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -14,7 +15,7 @@ void main() {
     });
 
     test('can be registered', () {
-      FlidaAuthSdkWeb.registerWith();
+      FlidaAuthSdkWeb.registerWith(Registrar());
       expect(FlidaAuthSdkPlatform.instance, isA<FlidaAuthSdkWeb>());
     });
 

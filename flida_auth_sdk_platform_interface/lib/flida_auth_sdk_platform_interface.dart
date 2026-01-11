@@ -1,12 +1,11 @@
-import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-
 import 'package:flida_auth_sdk_platform_interface/src/events.dart';
 import 'package:flida_auth_sdk_platform_interface/src/method_channel_flida_auth_sdk.dart';
 import 'package:flida_auth_sdk_platform_interface/src/types.dart';
+import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 export 'src/events.dart';
-export 'src/types.dart';
 export 'src/method_channel_flida_auth_sdk.dart';
+export 'src/types.dart';
 
 /// {@template flida_auth_sdk_platform}
 /// The interface that implementations of flida_auth_sdk must implement.

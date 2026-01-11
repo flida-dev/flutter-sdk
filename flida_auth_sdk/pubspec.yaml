@@ -17,8 +17,6 @@ flutter:
         default_package: flida_auth_sdk_web
 
 dependencies:
-  flutter:
-    sdk: flutter
   flida_auth_sdk_android:
     path: ../flida_auth_sdk_android
   flida_auth_sdk_ios:
@@ -27,6 +25,8 @@ dependencies:
     path: ../flida_auth_sdk_platform_interface
   flida_auth_sdk_web:
     path: ../flida_auth_sdk_web
+  flutter:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:
