@@ -1,7 +1,7 @@
-import 'package:flutter/services.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:flida_auth_sdk_ios/flida_auth_sdk_ios.dart';
 import 'package:flida_auth_sdk_platform_interface/flida_auth_sdk_platform_interface.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -16,15 +16,17 @@ void main() {
 
       log = <MethodCall>[];
       TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
-          .setMockMethodCallHandler(flidaAuthSdk.methodChannel, (methodCall) async {
-        log.add(methodCall);
-        switch (methodCall.method) {
-          case 'getPlatformName':
-            return kPlatformName;
-          default:
-            return null;
-        }
-      });
+          .setMockMethodCallHandler(flidaAuthSdk.methodChannel, (
+            methodCall,
+          ) async {
+            log.add(methodCall);
+            switch (methodCall.method) {
+              case 'getPlatformName':
+                return kPlatformName;
+              default:
+                return null;
+            }
+          });
     });
 
     test('can be registered', () {

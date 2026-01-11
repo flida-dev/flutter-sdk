@@ -28,6 +28,8 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+
+        manifestPlaceholders["flidaAuthHost"] = "019bacf9-f8b5-79bc-ac04-207c31b4c8ed.api.flida.dev"
     }
 
     buildTypes {

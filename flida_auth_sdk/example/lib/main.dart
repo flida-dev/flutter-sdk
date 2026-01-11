@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flida_auth_sdk/flida_auth_sdk.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +31,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _startMonitoring();
-    _restoreSession();
+    unawaited(_restoreSession());
   }
 
   Future<void> _restoreSession() async {
@@ -197,7 +199,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8),
             child: Wrap(
               spacing: 8,
               children: [
