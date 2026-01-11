@@ -1,0 +1,36 @@
+name: flida_auth_sdk
+description: Auth SDK for Flida
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: ^3.9.0
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        default_package: flida_auth_sdk_android
+      ios:
+        default_package: flida_auth_sdk_ios
+      web:
+        default_package: flida_auth_sdk_web
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flida_auth_sdk_android:
+    path: ../flida_auth_sdk_android
+  flida_auth_sdk_ios:
+    path: ../flida_auth_sdk_ios
+  flida_auth_sdk_platform_interface:
+    path: ../flida_auth_sdk_platform_interface
+  flida_auth_sdk_web:
+    path: ../flida_auth_sdk_web
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mocktail: ^1.0.4
+  plugin_platform_interface: ^2.1.8
+  very_good_analysis: ^10.0.0

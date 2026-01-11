@@ -1,0 +1,31 @@
+version: 2
+enable-beta-ecosystems: true
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "/flida_auth_sdk"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "/flida_auth_sdk/example"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "/flida_auth_sdk_platform_interface"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "/flida_auth_sdk_android"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "/flida_auth_sdk_ios"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "/flida_auth_sdk_web"
+    schedule:
+      interval: "daily"

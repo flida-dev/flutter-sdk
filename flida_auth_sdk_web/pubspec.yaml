@@ -1,0 +1,28 @@
+name: flida_auth_sdk_web
+description: Web implementation of the flida_auth_sdk plugin
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: ^3.9.0
+
+flutter:
+  plugin:
+    implements: flida_auth_sdk
+    platforms:
+      web:
+        pluginClass: FlidaAuthSdkWeb
+        fileName: flida_auth_sdk_web.dart
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+  flida_auth_sdk_platform_interface:
+    path: ../flida_auth_sdk_platform_interface
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  very_good_analysis: ^10.0.0
