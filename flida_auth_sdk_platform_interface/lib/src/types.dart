@@ -67,7 +67,7 @@ class FlidaToken {
     return FlidaToken(
       accessToken: map['accessToken'] as String,
       refreshToken: map['refreshToken'] as String?,
-      expiresIn: (map['expiresIn'] as num?)?.toInt(),
+      expiresIn: map['expiresIn'] as int?,
     );
   }
 

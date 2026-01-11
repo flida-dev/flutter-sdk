@@ -224,14 +224,22 @@ class FlidaAuthSdkWeb extends FlidaAuthSdkPlatform {
     try {
       final userInfo = await _apiClient.getUserInfo(accessToken: accessToken);
 
+      // API returns e_mail_addresses and phone_numbers as arrays
+      final emailAddresses = userInfo['e_mail_addresses'] as List<dynamic>?;
+      final phoneNumbers = userInfo['phone_numbers'] as List<dynamic>?;
+
       final user = FlidaUser(
         id: userInfo['id'] as String,
         name:
             userInfo['name'] as String? ??
             userInfo['display_name'] as String? ??
             '',
-        email: userInfo['email'] as String?,
-        phoneNumber: userInfo['phone_number'] as String?,
+        email: emailAddresses?.isNotEmpty == true
+            ? emailAddresses!.first as String
+            : null,
+        phoneNumber: phoneNumbers?.isNotEmpty == true
+            ? phoneNumbers!.first as String
+            : null,
         rawData: userInfo,
       );
 
