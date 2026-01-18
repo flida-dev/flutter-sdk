@@ -1,14 +1,17 @@
 # flida_auth_sdk_web
 
-[![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]
-
-The web implementation of `flida_auth_sdk`.
+The Web implementation of `flida_auth_sdk`.
 
 ## Usage
 
-This package is [endorsed][endorsed_link], which means you can simply use `flida_auth_sdk`
-normally. This package will be automatically included in your app when you do.
+This package is endorsed, which means you can simply use `flida_auth_sdk` normally. This package will be automatically included in your app when you do.
 
-[endorsed_link]: https://flutter.dev/docs/development/packages-and-plugins/developing-packages#endorsed-federated-plugin
-[very_good_analysis_badge]: https://img.shields.io/badge/style-very_good_analysis-B22C89.svg
-[very_good_analysis_link]: https://pub.dev/packages/very_good_analysis
+### Configuration
+
+Add the `meta` tag to your `index.html`:
+
+```html
+<meta name="flida-config" content="YOUR_CLIENT_ID.api.flida.dev">
+```
+
+See the main [flida_auth_sdk](https://pub.dev/packages/flida_auth_sdk) package for complete documentation.

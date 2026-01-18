@@ -1,30 +1,30 @@
 # Flida Auth SDK
 
-Official Flutter SDK for integrating Flida authentication into your applications (Android, iOS, Web).
+Официальный Flutter SDK для интеграции аутентификации Flida в ваши приложения (Android, iOS, Web).
 
-## Installation
+## Установка
 
-Add dependencies to your `pubspec.yaml`:
+Добавьте зависимость в `pubspec.yaml`:
 
 ```yaml
 dependencies:
   flida_auth_sdk: ^latest_version
 ```
 
-Run command:
+Выполните команду:
 ```bash
 flutter pub get
 ```
 
-## Configuration
+## Конфигурация
 
 ### Android
 
 1. **Gradle Setup:**
-   Ensure `minSdkVersion` in `android/app/build.gradle` is at least 21.
+   Убедитесь, что `minSdkVersion` в `android/app/build.gradle` не ниже 21.
 
 2. **Redirect URI:**
-   Add `manifestPlaceholders` in `android/app/build.gradle`:
+   В `android/app/build.gradle` добавьте `manifestPlaceholders`:
 
    ```groovy
    android {
@@ -36,12 +36,12 @@ flutter pub get
        }
    }
    ```
-   Replace `YOUR_CLIENT_ID` with your actual Client ID.
+   Замените `YOUR_CLIENT_ID` на ваш реальный Client ID.
 
 ### iOS
 
 1. **Info.plist:**
-   Add the following keys to `ios/Runner/Info.plist`:
+   Добавьте следующие ключи в `ios/Runner/Info.plist`:
 
    ```xml
    <key>FlidaAuthHost</key>
@@ -57,31 +57,31 @@ flutter pub get
        </dict>
    </array>
    ```
-   **Important:** The URL Scheme must be `flida` concatenated with your Client ID.
+   **Важно:** URL Scheme должен быть в формате `flida` + ваш Client ID.
 
 ### Web
 
 1. **index.html:**
-   Add the configuration meta tag to your `web/index.html` file inside the `<head>` tag:
+   Добавьте мета-тег конфигурации в файл `web/index.html` внутри тега `<head>`:
 
    ```html
    <meta name="flida-config" content="YOUR_CLIENT_ID.api.flida.dev">
    ```
    
-   Optionally, you can specify a custom redirect URI (default is your current origin):
+   Опционально можно указать свой redirect URI (по умолчанию используется текущий домен):
    ```html
    <meta name="flida-redirect-uri" content="http://localhost:3000/callback">
    ```
 
-## Usage
+## Использование
 
-### Import
+### Импорт
 
 ```dart
 import 'package:flida_auth_sdk/flida_auth_sdk.dart';
 ```
 
-### Sign In
+### Вход (Sign In)
 
 ```dart
 Future<void> signIn() async {
@@ -94,27 +94,27 @@ Future<void> signIn() async {
       print('Access Token: ${token.accessToken}');
     }
   } catch (e) {
-    print('Sign in failed: $e');
+    print('Ошибка входа: $e');
   }
 }
 ```
 
-### Get User Info
+### Получение информации о пользователе
 
 ```dart
 Future<void> getUserInfo(String accessToken) async {
   try {
     final user = await FlidaAuthSdk.getUserInfo(accessToken: accessToken);
     if (user != null) {
-        print('User: ${user.name}, ID: ${user.id}');
+        print('Пользователь: ${user.name}, ID: ${user.id}');
     }
   } catch (e) {
-    print('Failed to get user: $e');
+    print('Ошибка получения данных: $e');
   }
 }
 ```
 
-### Refresh Tokens
+### Обновление токенов
 
 ```dart
 Future<void> refreshToken(String refreshToken) async {
@@ -122,35 +122,34 @@ Future<void> refreshToken(String refreshToken) async {
     final newToken = await FlidaAuthSdk.refreshTokens(
       refreshToken: refreshToken
     );
-    print('New Access Token: ${newToken?.accessToken}');
+    print('Новый Access Token: ${newToken?.accessToken}');
   } catch (e) {
-    print("Refresh failed: $e");
+    print("Ошибка обновления токена: $e");
   }
 }
 ```
 
-### Sign Out
+### Выход (Sign Out)
 
 ```dart
 await FlidaAuthSdk.signOut();
 ```
 
-### Events
+### События
 
-Subscribe to authentication events:
+Подписка на события аутентификации:
 
 ```dart
 FlidaAuthSdk.events.listen((event) {
   switch (event.type) {
     case FlidaEventType.signedIn:
-      print('User signed in: ${event.user?.name}');
+      print('Пользователь вошел: ${event.user?.name}');
     case FlidaEventType.loggedOut:
-      print('User logged out. Reason: ${event.logoutReason}');
+      print('Пользователь вышел. Причина: ${event.logoutReason}');
     case FlidaEventType.signInFailed:
-      print('Sign in failed: ${event.error}');
+      print('Ошибка входа: ${event.error}');
     default:
       break;
   }
 });
 ```
-
